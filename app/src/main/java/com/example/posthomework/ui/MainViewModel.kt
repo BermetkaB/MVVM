@@ -2,11 +2,15 @@ package com.example.posthomework.ui
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.posthomework.data.api.RetrofitBuilder
+import com.example.posthomework.data.model.Post
+import com.example.posthomework.data.repository.PostRepository
+import kotlinx.coroutines.launch
 import retrofit2.Response
 
-class MainViewModel {
-    class MainViewModel(val repository: RetrofitBuilder): ViewModel() {
+class MainViewModel
+    (val repository: PostRepository): ViewModel() {
         val response: MutableLiveData<Response<List<Post>>> = MutableLiveData()
 
         fun getDataFromApi(){
